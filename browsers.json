@@ -1,0 +1,15 @@
+{
+    "chrome": {
+        "default": "90.0",
+        "versions": {
+            "90.0": {
+                "image": "localhost:5000/selenoid/chrome:90.0",
+                "port": "4444",
+                "path": "/",
+                "cpu" : "0.5",  
+                "env" : ["TZ=Europe/Moscow"],              
+                "mem" : "512m"
+            }
+        }
+    }
+}

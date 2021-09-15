@@ -1,0 +1,20 @@
+version: '3'  
+services:
+  selenoid:
+    image: localhost:5000/selenoid/hub:1.10.4
+    ports:
+     - "4444:4444"
+    volumes:
+     - "/var/run/docker.sock:/var/run/docker.sock"
+     - "/tmp/selenoid/:/opt/selenoid/logs/"
+     - "/home/qwe/sberbank/:/etc/selenoid/:ro"
+    environment:
+     - OVERRIDE_VIDEO_OUTPUT_DIR=/tmp/selenoid/
+    command: ["-log-output-dir","/opt/selenoid/logs/","-video-recorder-image","localhost:5000/selenoid/video-recorder:7.1"]
+  selenoid-ui:
+    image: localhost:5000/aerokube/selenoid-ui:1.10.3 
+    ports:
+     - "8080:8080"
+    links:
+     - selenoid
+    command: ["--selenoid-uri", "http://selenoid:4444"]

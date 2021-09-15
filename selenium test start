@@ -1,0 +1,11 @@
+
+
+node ./mytest.js 
+sudo rm -rf /tmp/selenoid
+ls -lah /tmp/selenoid
+
+
+
+
+
+
